@@ -1,3 +1,3 @@
-#Dama_Java
+# Dama Java
 
--> Escopo de desenvolvimento de um jogo de Dama em java, sem interface gráfica.
+Jogo de dama desenvolvido em Java sem interfaxe gráfica. Ainda incompleto.
