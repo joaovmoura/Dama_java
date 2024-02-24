@@ -1,6 +1,6 @@
 package Dama;
 
 public enum Cor {
-  WHITE;
+  WHITE,
   BLACK;
 }

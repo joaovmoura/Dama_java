@@ -2,12 +2,15 @@ package Dama;
 
 public class PecaDama {
 
-    private Integer posX;
-    private Integer posY;
+    private PosicaoDama posicaoDama;
 
     PecaDama(int x, int y){
+        this.posicaoDama = new PosicaoDama(x, y);
+    }
+
+    public void movimenta(int x, int y){
         this.posX = x;
         this.posY = y;
     }
-    
-    }
+
+}
