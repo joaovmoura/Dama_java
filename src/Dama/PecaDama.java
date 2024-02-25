@@ -1,7 +1,6 @@
 package Dama;
 
 public class PecaDama {
-
     private PosicaoDama posicaoDama;
 
 
@@ -10,8 +9,6 @@ public class PecaDama {
     }
 
     public void movimenta(int x, int y){
-        this.posX = x;
-        this.posY = y;
+        this.posicaoDama.setPosicao(x, y);
     }
-
 }

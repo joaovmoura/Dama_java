@@ -1,7 +1,8 @@
 package Dama;
 
-public class DamaException extends RuntimeException{
-    public DamaException(String message) {
-        super(message);
+public class DamaException extends Exception{
+
+    public DamaException(String msg) {
+        super(msg);
     }
 }

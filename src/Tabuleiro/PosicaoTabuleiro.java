@@ -1,21 +1,28 @@
-package tabuleiro;
+package Tabuleiro;
 
 public class PosicaoTabuleiro {
+
     private Integer x;
     private Integer y;
-
-    private Boolean ocupada;
 
     public PosicaoTabuleiro(Integer x, Integer y) {
         this.x = x;
         this.y = y;
-        this.ocupada = false;
     }
 
-    public PosicaoTabuleiro(Integer x, Integer y, Boolean ocupada) {
+    public Integer getX() {
+        return x;
+    }
+
+    public void setX(Integer x) {
         this.x = x;
+    }
+
+    public Integer getY() {
+        return y;
+    }
+
+    public void setY(Integer y) {
         this.y = y;
-        this.ocupada = ocupada;
     }
 }
-

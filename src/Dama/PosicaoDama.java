@@ -1,10 +1,17 @@
 package Dama;
-import tabuleiro.PosicaoTabuleiro;
+
+import Tabuleiro.PosicaoTabuleiro;
+
 public class PosicaoDama {
 
-    private PosicaoTabuleiro posicaoTabuleiro;
+    private PosicaoTabuleiro posicao;
 
     public PosicaoDama(int x, int y) {
-        this.posicaoTabuleiro = new PosicaoTabuleiro(x, y, true);
+        this.posicao = new PosicaoTabuleiro(x, y);
+    }
+
+    public void setPosicao (int x, int y){
+        this.posicao.setX(x);
+        this.posicao.setY(y);
     }
 }
