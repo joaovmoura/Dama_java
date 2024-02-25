@@ -4,6 +4,7 @@ public class PecaDama {
 
     private PosicaoDama posicaoDama;
 
+
     PecaDama(int x, int y){
         this.posicaoDama = new PosicaoDama(x, y);
     }
