@@ -1,19 +1,15 @@
 import Aplicacao.Jogo;
+import Aplicacao.UI;
 import Dama.PecaDama;
+
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
-        Jogo jogo = new Jogo();
-        PecaDama[][] pecas = jogo.getTabuleiro();
-        for (int i = 0; i < 8; i++) {
-            for (int j = 0; j < 8; j++) {
-                if (pecas[i][j] != null) {
-                    System.out.print("0 ");
-                } else {
-                    System.out.print("X ");
-                }
-            }
-            System.out.println(); // Pula para a próxima linha após imprimir uma linha do tabuleiro
-        }
+
+        UI ui = new UI();
+        Jogo jogo = new Jogo(ui.pegaNomeJogador(), ui.pegaNomeJogador());
+        ui.printaTabuleiro(jogo);
+
     }
 }
