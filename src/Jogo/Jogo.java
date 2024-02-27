@@ -3,6 +3,7 @@ package Jogo;
 import Dama.Cor;
 import Dama.PecaDama;
 import Dama.PosicaoDama;
+import Dama.Tipo;
 import Jogador.Jogador;
 import Tabuleiro.*;
 
@@ -57,7 +58,7 @@ public class Jogo {
             throw new JogoException("A posição de destino já está ocupada.");
 
         PecaDama peca = this.tabuleiro.getPeca(linhaOrigem-1, colunaOrigem-1);
-        if(!checaMovimento(peca, linhaDestino-1, colunaDestino-1))
+        if(peca.getTipo() == Tipo.COMUM && !checaMovimentoComum(peca, linhaDestino-1, colunaDestino-1))
             throw new JogoException("Não é possível movimentar a peça para essa posição.");
 
         this.tabuleiro.removePeca(linhaOrigem-1, colunaOrigem-1);
@@ -66,7 +67,7 @@ public class Jogo {
     }
 
 
-    private boolean checaMovimento(PecaDama peca, int linha, int coluna){
+    private boolean checaMovimentoComum(PecaDama peca, int linha, int coluna){
         PosicaoDama posicao = peca.getPosicao();
 
         return  ((peca.getCor() == Cor.BRANCO && linha == posicao.getX() + 1) || (peca.getCor() == Cor.PRETO && linha == posicao.getX()- 1)) &&
