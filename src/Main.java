@@ -10,7 +10,7 @@ public class Main {
             UI ui = new UI();
             Jogo jogo = new Jogo(ui.pegaNomeJogador(), ui.pegaNomeJogador());
             ui.printaTabuleiro(jogo);
-            jogo.movimentaPeca(3, 1, 4, 2);
+            jogo.movimentaPeca(6, 1, 5, 2);
             System.out.println();
             ui.printaTabuleiro(jogo);
         }catch(TabuleiroException | JogoException e){

@@ -13,8 +13,11 @@ public class PecaDama {
         return cor;
     }
 
-    public void movimenta(int x, int y){
+    public void setPosicaoDama(int x, int y){
         this.posicaoDama.setPosicao(x, y);
     }
 
+    public PosicaoDama getPosicao() {
+        return this.posicaoDama;
+    }
 }

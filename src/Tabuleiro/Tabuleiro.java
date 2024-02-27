@@ -24,6 +24,7 @@ public class Tabuleiro {
 
     public void addPeca(int i, int j, Cor cor) {
         this.pecas[i][j] = new PecaDama(i, j, cor);
+        this.pecas[i][j].setPosicaoDama(i, j);
     }
 
     public PecaDama[][] getPecas() {
