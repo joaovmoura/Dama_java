@@ -1,5 +1,6 @@
 package Tabuleiro;
 
+import Dama.Cor;
 import Dama.PecaDama;
 
 public class Tabuleiro {
@@ -21,11 +22,15 @@ public class Tabuleiro {
         return pecas[linha][coluna];
     }
 
-    public void addPeca(int i, int j) {
-        this.pecas[i][j] = new PecaDama(i, j);
+    public void addPeca(int i, int j, Cor cor) {
+        this.pecas[i][j] = new PecaDama(i, j, cor);
     }
 
     public PecaDama[][] getPecas() {
         return pecas;
+    }
+
+    public Boolean posicaoOcupada(int x, int y){
+        return pecas[x][y] != null;
     }
 }

@@ -1,10 +1,8 @@
-package Aplicacao;
+package Jogo;
 
-import Dama.PecaDama;
+import Dama.Cor;
 import Jogador.Jogador;
 import Tabuleiro.Tabuleiro;
-
-import java.util.Collection;
 
 public class Jogo {
 
@@ -26,19 +24,20 @@ public class Jogo {
             for(int j = 0; j<8; j++)
                 if(i%2==0){
                     if(j%2 == 0){
-                        this.tabuleiro.addPeca(i, j);
-                        this.tabuleiro.addPeca(7-i, j);
+                        this.tabuleiro.addPeca(i, j, Cor.BRANCO);
+                        this.tabuleiro.addPeca(7-i, j, Cor.PRETO);
                     }
                 }else{
                     if(j%2 == 1){
-                        this.tabuleiro.addPeca(i, j);
-                        this.tabuleiro.addPeca(7-i, j);
+                        this.tabuleiro.addPeca(i, j, Cor.BRANCO);
+                        this.tabuleiro.addPeca(7-i, j, Cor.PRETO);
                     }
                 }
     }
 
-    public PecaDama[][] getTabuleiro() {
-        return this.tabuleiro.getPecas();
+
+    public Tabuleiro getTabuleiro() {
+        return this.tabuleiro;
     }
 
     public String getJogador1() {
@@ -47,5 +46,13 @@ public class Jogo {
 
     public String getJogador2() {
         return jogador2.getName();
+    }
+
+    public void movimentaPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) throws JogoException{
+        if (!tabuleiro.posicaoOcupada(linhaOrigem, colunaOrigem))
+            throw new JogoException("Não há nenhuma peça nessa posição. ");
+        if(!tabuleiro.posicaoOcupada(linhaDestino, colunaDestino))
+            throw new JogoException("A posição de destino já está ocupada.");
+
     }
 }
