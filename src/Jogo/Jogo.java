@@ -1,8 +1,9 @@
 package Jogo;
 
 import Dama.Cor;
+import Dama.PecaDama;
 import Jogador.Jogador;
-import Tabuleiro.Tabuleiro;
+import Tabuleiro.*;
 
 public class Jogo {
 
@@ -48,11 +49,15 @@ public class Jogo {
         return jogador2.getName();
     }
 
-    public void movimentaPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) throws JogoException{
-        if (!tabuleiro.posicaoOcupada(linhaOrigem, colunaOrigem))
+    public void movimentaPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) throws JogoException, TabuleiroException {
+        if (!tabuleiro.posicaoOcupada(linhaOrigem-1, colunaOrigem-1))
             throw new JogoException("Não há nenhuma peça nessa posição. ");
-        if(!tabuleiro.posicaoOcupada(linhaDestino, colunaDestino))
+        if(tabuleiro.posicaoOcupada(linhaDestino-1, colunaDestino-1))
             throw new JogoException("A posição de destino já está ocupada.");
+
+        PecaDama peca = this.tabuleiro.getPeca(linhaOrigem-1, colunaOrigem-1);
+        this.tabuleiro.removePeca(linhaOrigem-1, colunaOrigem-1);
+        this.tabuleiro.addPeca(linhaDestino-1, colunaDestino-1, peca.getCor());
 
     }
 }

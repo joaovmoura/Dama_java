@@ -1,17 +1,33 @@
 package Dama;
 
-import Tabuleiro.PosicaoTabuleiro;
 
 public class PosicaoDama {
 
-    private PosicaoTabuleiro posicao;
+    private Integer x;
+    private Integer y;
 
-    public PosicaoDama(int x, int y) {
-        this.posicao = new PosicaoTabuleiro(x, y);
+    public PosicaoDama(Integer x, Integer y) {
+        this.x = x;
+        this.y = y;
     }
 
-    public void setPosicao (int x, int y){
-        this.posicao.setX(x);
-        this.posicao.setY(y);
+    public void setPosicao(int x, int y){
+        this.x =x;
+        this.y = y;
+    }
+    public Integer getX() {
+        return this.x;
+    }
+
+    public void setX(Integer x) {
+        this.x = x;
+    }
+
+    public Integer getY() {
+        return y;
+    }
+
+    public void setY(Integer y) {
+        this.y = y;
     }
 }

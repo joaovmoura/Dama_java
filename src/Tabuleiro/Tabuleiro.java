@@ -33,4 +33,8 @@ public class Tabuleiro {
     public Boolean posicaoOcupada(int x, int y){
         return pecas[x][y] != null;
     }
+
+    public void removePeca(int x, int y) {
+        this.pecas[x][y] = null;
+    }
 }
