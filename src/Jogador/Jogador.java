@@ -17,4 +17,8 @@ public class Jogador {
     public Integer getQtdPecasCapturadas() {
         return qtdPecasCapturadas;
     }
+
+    public void capturaPeca() {
+        this.qtdPecasCapturadas++;
+    }
 }

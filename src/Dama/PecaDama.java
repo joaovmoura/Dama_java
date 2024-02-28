@@ -6,8 +6,8 @@ public class PecaDama {
 
     private Tipo tipo;
 
-    public PecaDama(int x, int y, Cor cor){
-        this.posicaoDama = new PosicaoDama(x, y);
+    public PecaDama(PosicaoDama posicao, Cor cor){
+        this.posicaoDama = posicao;
         this.cor = cor;
         this.tipo = Tipo.COMUM;
     }
@@ -16,8 +16,8 @@ public class PecaDama {
         return cor;
     }
 
-    public void setPosicaoDama(int x, int y){
-        this.posicaoDama.setPosicao(x, y);
+    public void setPosicaoDama(PosicaoDama posicaoDama){
+        this.posicaoDama = posicaoDama;
     }
 
     public PosicaoDama getPosicao() {

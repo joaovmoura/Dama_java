@@ -2,6 +2,7 @@ package Tabuleiro;
 
 import Dama.Cor;
 import Dama.PecaDama;
+import Dama.PosicaoDama;
 
 public class Tabuleiro {
 
@@ -22,9 +23,8 @@ public class Tabuleiro {
         return pecas[linha][coluna];
     }
 
-    public void addPeca(int i, int j, Cor cor) {
-        this.pecas[i][j] = new PecaDama(i, j, cor);
-        this.pecas[i][j].setPosicaoDama(i, j);
+    public void addPeca(PosicaoDama posicao, Cor cor) {
+        this.pecas[posicao.getX()][posicao.getY()] = new PecaDama(posicao, cor);
     }
 
     public PecaDama[][] getPecas() {
@@ -35,7 +35,7 @@ public class Tabuleiro {
         return pecas[x][y] != null;
     }
 
-    public void removePeca(int x, int y) {
-        this.pecas[x][y] = null;
+    public void removePeca(PosicaoDama posicao) {
+        this.pecas[posicao.getX()][posicao.getY()] = null;
     }
 }
