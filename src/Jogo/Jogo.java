@@ -26,16 +26,16 @@ public class Jogo {
         for(int i = 0; i < 3; i++)
             for(int j = 0; j<8; j++)
                 if(i%2==0){
-                    if(j%2 == 0){
-
+                    if(j%2 == 0)
                         this.tabuleiro.addPeca(new PosicaoDama(i, j), Cor.BRANCO);
+                    else
                         this.tabuleiro.addPeca(new PosicaoDama(7-i, j), Cor.PRETO);
-                    }
                 }else{
-                    if(j%2 == 1){
+                    if(j%2 == 1)
                         this.tabuleiro.addPeca(new PosicaoDama(i, j), Cor.BRANCO);
+                    else
                         this.tabuleiro.addPeca(new PosicaoDama(7-i, j), Cor.PRETO);
-                    }
+
                 }
     }
 
@@ -53,27 +53,28 @@ public class Jogo {
     }
 
     public void movimentaPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) throws JogoException, TabuleiroException {
-        if (!tabuleiro.posicaoOcupada(linhaOrigem-1, colunaOrigem-1))
+        if (!tabuleiro.posicaoOcupada(linhaOrigem, colunaOrigem))
             throw new JogoException("Não há nenhuma peça nessa posição. ");
-        PecaDama pecaOrigem = this.tabuleiro.getPeca(linhaOrigem-1, colunaOrigem-1);
+        PecaDama pecaOrigem = this.tabuleiro.getPeca(linhaOrigem, colunaOrigem);
         Cor corOrigem = pecaOrigem.getCor();
-        if(tabuleiro.posicaoOcupada(linhaDestino-1, colunaDestino-1)){
-            PecaDama pecaDestino = this.tabuleiro.getPeca(linhaDestino-1, colunaDestino-1);
+        if(tabuleiro.posicaoOcupada(linhaDestino, colunaDestino)){
+            int linhaAdversario = (linhaOrigem + colunaOrigem) / 2;
+            int colunaAdversario = (colunaOrigem + colunaDestino) / 2;
+            PecaDama pecaDestino = this.tabuleiro.getPeca(linhaAdversario, colunaAdversario);
             Cor corDestino = pecaDestino.getCor();
             if (corOrigem == corDestino)
-                throw new JogoException("Posição já ocupada por uma pessa sua.");
+                throw new JogoException("Posição já ocupada por uma peça sua.");
 
             Jogador jogador = corOrigem == Cor.BRANCO ? this.jogador1 : this.jogador2;
             capturaPeca(jogador, pecaDestino);
+        }else{
+            
+            if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, linhaDestino, colunaDestino))
+                throw new JogoException("Não é possível movimentar a peça para essa posição.");
+    
+            this.tabuleiro.removePeca(new PosicaoDama(linhaOrigem, colunaOrigem));
+            this.tabuleiro.addPeca(new PosicaoDama(linhaDestino, colunaDestino), pecaOrigem.getCor());
         }
-
-
-
-        if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, linhaDestino-1, colunaDestino-1))
-            throw new JogoException("Não é possível movimentar a peça para essa posição.");
-
-        this.tabuleiro.removePeca(new PosicaoDama(linhaOrigem-1, colunaOrigem-1));
-        this.tabuleiro.addPeca(new PosicaoDama(linhaDestino-1, colunaDestino-1), pecaOrigem.getCor());
 
     }
 

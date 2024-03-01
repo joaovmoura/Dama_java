@@ -21,7 +21,7 @@ public class UI {
         PecaDama[][] pecas = tabuleiro.getPecas();
 
         for (int i = 0; i < 8; i++) {
-            System.out.print((i + 1) + " ");
+            System.out.print(i + " ");
             for (int j = 0; j < 8; j++) {
 
                 if (pecas[i][j] != null) {
@@ -35,7 +35,7 @@ public class UI {
             }
             System.out.println();
         }
-        System.out.println("  1 2 3 4 5 6 7 8");
+        System.out.println("  0 1 2 3 4 5 6 7");
     }
 
     public String pegaNomeJogador (){
