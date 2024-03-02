@@ -16,10 +16,7 @@ public class Tabuleiro {
         this.pecas = new PecaDama[linhas][colunas];
     }
 
-    public PecaDama getPeca(int linha, int coluna) throws TabuleiroException {
-        if (pecas[linha][coluna] == null)
-            throw new TabuleiroException("Não há peças nessa posição!");
-
+    public PecaDama getPeca(int linha, int coluna){
         return pecas[linha][coluna];
     }
 
