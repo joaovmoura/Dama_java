@@ -30,7 +30,7 @@ public class UI {
 
                     System.out.print(corCodigo + "0\u001B[0m ");
                 } else {
-                    System.out.print("X ");
+                    System.out.print("- ");
                 }
             }
             System.out.println();
