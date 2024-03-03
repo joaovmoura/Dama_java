@@ -52,16 +52,16 @@ public class Jogo {
         return jogador2.getName();
     }
 
-    public void movimentaPeca(int linhaOrigem, int colunaOrigem, int linhaDestino, int colunaDestino) throws JogoException, TabuleiroException {
-        if (!tabuleiro.posicaoOcupada(linhaOrigem, colunaOrigem))
+    public void movimentaPeca(Integer[] jogada) throws JogoException, TabuleiroException {
+        if (!tabuleiro.posicaoOcupada(jogada[0], jogada[1]))
             throw new JogoException("Não há nenhuma peça nessa posição. ");
-        PecaDama pecaOrigem = this.tabuleiro.getPeca(linhaOrigem, colunaOrigem);
+        PecaDama pecaOrigem = this.tabuleiro.getPeca(jogada[0], jogada[1]);
 
-        if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, linhaDestino, colunaDestino))
+        if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, jogada[2], jogada[3]))
             throw new JogoException("Não é possível movimentar a peça para essa posição.");
 
-        this.tabuleiro.removePeca(new PosicaoDama(linhaOrigem, colunaOrigem));
-        this.tabuleiro.addPeca(new PosicaoDama(linhaDestino, colunaDestino), pecaOrigem.getCor());
+        this.tabuleiro.removePeca(new PosicaoDama(jogada[0], jogada[1]));
+        this.tabuleiro.addPeca(new PosicaoDama(jogada[2], jogada[3]), pecaOrigem.getCor());
 
     }
 

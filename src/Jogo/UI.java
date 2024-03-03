@@ -8,6 +8,8 @@ import java.util.Scanner;
 
 public class UI {
 
+    private final Scanner scanner = new Scanner(System.in);
+
 
     public void printaTabuleiro (Jogo jogo) throws TabuleiroException {
 
@@ -40,8 +42,20 @@ public class UI {
 
     public String pegaNomeJogador (){
         System.out.print("Nome do jogador: ");
-        Scanner scanner = new Scanner(System.in);
 
         return scanner.nextLine();
+    }
+
+    public Integer[] capturaJogada(){
+        Integer[] resultado = new Integer[4];
+        System.out.println("Qual a linha da peça a ser movimentada?");
+        resultado[0] = scanner.nextInt();
+        System.out.println("Qual a coluna da peça a ser movimentada?");
+        resultado[1] = scanner.nextInt();
+        System.out.println("Qual a linha da posição destino?");
+        resultado[2] = scanner.nextInt();
+        System.out.println("Qual a coluna da posição destino?");
+        resultado[3] = scanner.nextInt();
+        return resultado;
     }
 }
