@@ -6,5 +6,6 @@ Para mover a peça, o usuário deve inserir a linha e a coluna da peça a ser mo
 
 ## TODO
 - Implementar sistema que determine um vencedor
-- Implementar a regra que faça cada jogador jogar uma vez
+- Implementar a regra que faça cada jogador jogar uma vez (OK)
 - Implementar regra que obriga o jogador a capturar a peça adversária
+- Implementar possibilidade de o jogador tentar uma jogada errada e jogar novamente
