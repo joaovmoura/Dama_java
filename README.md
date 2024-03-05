@@ -1,5 +1,6 @@
 # Dama Java
-Jogo de dama desenvolvido em Java sem interfaxe gráfica.
+Jogo de dama desenvolvido em Java sem interface gráfica.
+
 ---
 Para mover a peça, o usuário deve inserir a linha e a coluna da peça a ser movida e a linha e a coluna da posição destino. Caso haja uma peça adversária no caminho, ela é capturada.
 
