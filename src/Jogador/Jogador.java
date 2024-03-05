@@ -1,13 +1,17 @@
 package Jogador;
 
+import Dama.Cor;
+
 public class Jogador {
 
     private String name;
     private Integer qtdPecasCapturadas;
+    private Cor corDasPecas;
 
-    public Jogador(String name) {
+    public Jogador(String name, Cor cor) {
         this.name = name;
         this.qtdPecasCapturadas = 0;
+        this.corDasPecas = cor;
     }
 
     public String getName() {
@@ -20,5 +24,9 @@ public class Jogador {
 
     public void capturaPeca() {
         this.qtdPecasCapturadas++;
+    }
+
+    public Cor getCorDasPecas() {
+        return this.corDasPecas;
     }
 }

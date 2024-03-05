@@ -7,6 +7,8 @@ import Dama.Tipo;
 import Jogador.Jogador;
 import Tabuleiro.*;
 
+import java.awt.*;
+
 public class Jogo {
 
 
@@ -16,8 +18,8 @@ public class Jogo {
 
     public Jogo(String j1Nome, String j2Nome) {
         this.tabuleiro = new Tabuleiro(8, 8);
-        this.jogador1 = new Jogador(j1Nome);
-        this.jogador2 = new Jogador(j2Nome);
+        this.jogador1 = new Jogador(j1Nome, Cor.BRANCO);
+        this.jogador2 = new Jogador(j2Nome, Cor.PRETO);
         this.povoaTabuleiro();
     }
 
@@ -52,12 +54,19 @@ public class Jogo {
         return jogador2.getName();
     }
 
-    public void movimentaPeca(Integer[] jogada) throws JogoException, TabuleiroException {
+    public Jogador getJogadorPorNum (int num){
+        return (num==1) ? this.jogador1 : this.jogador2;
+    }
+
+    public void movimentaPeca(Integer[] jogada, Jogador jogador) throws JogoException, TabuleiroException {
         if (!tabuleiro.posicaoOcupada(jogada[0], jogada[1]))
-            throw new JogoException("Não há nenhuma peça nessa posição. ");
+            throw new JogoException("Não há nenhuma peça nessa posição.");
         PecaDama pecaOrigem = this.tabuleiro.getPeca(jogada[0], jogada[1]);
 
-        if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, jogada[2], jogada[3]))
+        if (pecaOrigem.getCor() != jogador.getCorDasPecas())
+            throw new JogoException("A peça na posição de origem não é sua.");
+
+        if(pecaOrigem.getTipo() == Tipo.COMUM && !checaMovimentoComum(pecaOrigem, jogada[2], jogada[3], jogador))
             throw new JogoException("Não é possível movimentar a peça para essa posição.");
 
         this.tabuleiro.removePeca(new PosicaoDama(jogada[0], jogada[1]));
@@ -71,7 +80,7 @@ public class Jogo {
     }
 
 
-    private boolean checaMovimentoComum(PecaDama peca, int linha, int coluna) throws JogoException {
+    private boolean checaMovimentoComum(PecaDama peca, int linha, int coluna, Jogador jogadorDaVez) throws JogoException {
         PosicaoDama posicao = peca.getPosicao();
         Cor corOrigem = peca.getCor();
         if(tabuleiro.posicaoOcupada(linha, coluna)) {
@@ -85,8 +94,7 @@ public class Jogo {
         int colunaAdversario = (posicao.getY() + coluna) / 2;
         PecaDama pecaAdversario = this.tabuleiro.getPeca(linhaAdversario, colunaAdversario);
         if(pecaAdversario != null){
-            Jogador jogador = corOrigem == Cor.BRANCO ? this.jogador1 : this.jogador2;
-            capturaPeca(jogador, pecaAdversario);
+            capturaPeca(jogadorDaVez, pecaAdversario);
             return true;
         }
 
